@@ -1,4 +1,4 @@
-package com.ljn.demo.json_object.jackson;
+package com.ljn.demo.json_object;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

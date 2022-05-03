@@ -3,6 +3,7 @@ package com.ljn.demo.json_object.jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ljn.demo.json_object.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,6 @@ public class Demo {
         System.out.println("原始数组: " + list);
         String listJson = object2json(list);
         System.out.println("object2json: " + listJson);
-        // 构建一个类型参数
-
         List<User> userList = json2objectList(listJson, User.class);
         System.out.println("json2objectList: " + userList);
     }
@@ -45,6 +44,7 @@ public class Demo {
     }
 
     public static <T> List<T> json2objectList(String listJson, Class<T> beanType) throws JsonProcessingException {
+        // 构建一个类型参数
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, beanType);
         return objectMapper.readValue(listJson, javaType);
     }
