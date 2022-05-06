@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 // 添加mvc配置
-//@Configuration
+@Configuration
 // 开启后，默认的mvc不再生效，统一在这里配置，不要开启
 // @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {

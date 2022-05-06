@@ -1,0 +1,2 @@
+# RestControllerAdvice
+可以捕获所有controller中的异常，将异常信息展示给用户

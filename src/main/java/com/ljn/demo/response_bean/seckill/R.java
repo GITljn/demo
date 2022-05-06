@@ -1,5 +1,8 @@
 package com.ljn.demo.response_bean.seckill;
 
+import lombok.Data;
+
+@Data
 public class R {
     private Integer code;
     private String msg;

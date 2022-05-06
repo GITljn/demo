@@ -1,4 +1,4 @@
-package com.ljn.demo.user_login_vertify.argument_resolver;
+package com.ljn.demo.config.web;
 
 import com.ljn.demo.user_login_vertify.User;
 import com.ljn.demo.user_login_vertify.UserService;
@@ -38,7 +38,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
         HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
         String ticket = CookieUtil.getCookieValue(request, "userTicket");
-        if (StringUtils.hasText(ticket)) {
+        if (StringUtils.isEmpty(ticket)) {
             return null;
         }
         User user = userService.getUserFromRedis(request, response, ticket);

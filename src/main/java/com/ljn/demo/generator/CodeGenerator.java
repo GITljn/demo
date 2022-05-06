@@ -11,7 +11,10 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 // 使用默认生成模板引擎 Velocity
 public class CodeGenerator {
-
+    /**
+     * 修改数据库名、包名、表名
+     * @param args
+     */
     public static void main(String[] args) {
         // 1、创建代码生成器
         AutoGenerator mpg = new AutoGenerator();

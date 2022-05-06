@@ -1,8 +1,11 @@
 package com.ljn.demo.response_bean.guli;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class R {
     private Boolean success;
     private Integer code;

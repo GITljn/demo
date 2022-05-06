@@ -1,10 +1,13 @@
 package com.ljn.demo.response_bean.me;
 
-import com.ljn.demo.response_bean.guli.ResCode;
+
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
+// 不加Data注解无法转换成json
+@Data
 public class R {
     private Boolean success;
     private Integer code;
@@ -32,6 +35,16 @@ public class R {
     public R codeAndMsg(REnum rEnum) {
         this.code = rEnum.getCode();
         this.msg = rEnum.getMessage();
+        return this;
+    }
+
+    public R code(Integer code) {
+        this.code = code;
+        return this;
+    }
+
+    public R msg(String msg) {
+        this.msg = msg;
         return this;
     }
 

@@ -1,8 +1,7 @@
-package com.ljn.demo.user_login_vertify.interceptor;
+package com.ljn.demo.config.web;
 
 import com.ljn.demo.user_login_vertify.User;
 import com.ljn.demo.user_login_vertify.UserService;
-
 import com.ljn.demo.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

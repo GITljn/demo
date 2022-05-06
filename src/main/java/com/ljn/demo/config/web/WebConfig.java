@@ -1,8 +1,11 @@
-package com.ljn.demo.user_login_vertify.argument_resolver;
+package com.ljn.demo.config.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -14,11 +17,24 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private UserArgumentResolver userArgumentResolver;
+    @Autowired
+    private UserLoginVerifyInterceptor userLoginVerifyInterceptor;
 
     // 添加参数解析器，会对含有满足条件的参数的接口(函数)进行拦截
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(userArgumentResolver);
+    }
+
+    // 添加拦截器，在请求到达controller之前执行
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(userLoginVerifyInterceptor)
+                .excludePathPatterns("/login/toLogin")
+                .excludePathPatterns("/login/doLogin")
+                // 不能使用"/static/**"
+                .excludePathPatterns("/bootstrap/**",
+                        "/img/**", "/jquery-validation/**", "/js/**", "/layer/**");
     }
 
     /*
