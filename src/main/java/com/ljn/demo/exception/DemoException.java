@@ -9,5 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DemoException extends RuntimeException {
-    private REnum rEnum;
+    private Integer code;
+    private String msg;
+    public DemoException(REnum rEnum) {
+        code = rEnum.getCode();
+        msg = rEnum.getMessage();
+    }
 }

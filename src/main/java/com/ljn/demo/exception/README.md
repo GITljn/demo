@@ -1,2 +1,3 @@
 # RestControllerAdvice
-可以捕获所有controller中的异常，将异常信息展示给用户
+1. 可以捕获所有controller中的异常，将异常信息展示给用户
+2. 注意除了RestControllerAdvice，是否还有其他捕获异常的机制，如果有的话要考虑捕获的先后顺序

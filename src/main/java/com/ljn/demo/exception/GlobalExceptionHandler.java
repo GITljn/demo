@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     // 常用于手动抛出异常，并将异常信息展示给用户
     @ExceptionHandler(DemoException.class)
     public R error(DemoException exception) {
-        return R.error().codeAndMsg(exception.getREnum());
+        return R.error().code(exception.getCode()).msg(exception.getMsg());
     }
 
     @ExceptionHandler(BindException.class)
