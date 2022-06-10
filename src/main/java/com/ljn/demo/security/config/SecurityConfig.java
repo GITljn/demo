@@ -58,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(accessDeniedHandler);
         // 允许跨域
         http.cors();
+        // 关闭默认的logout
+        http.logout().disable();
     }
 
     /*
@@ -74,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    // 将AuthenticationManager交给spring容器
+    // 将AuthenticationManager(认证链的起始对象)交给spring容器
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

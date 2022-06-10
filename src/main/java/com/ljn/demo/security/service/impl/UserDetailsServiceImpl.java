@@ -1,6 +1,6 @@
 package com.ljn.demo.security.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 import com.ljn.demo.security.entity.User;
 import com.ljn.demo.security.entity.UserDetailsImpl;
@@ -26,15 +26,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", username);
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getUserName, username);
         User user = userMapper.selectOne(queryWrapper);
         if (Objects.isNull(user)) {
             throw new RuntimeException("用户名不存在");
         }
 //        List<String> authorities = new ArrayList<>(Arrays.asList("test", "admin"));
         List<String> authorities = menuMapper.getPermissionsByUserId(user.getId());
-        UserDetailsImpl userDetails = new UserDetailsImpl(user, authorities);
+        UserDetailsImpl userDetails = new UserDetailsImpl();
+        userDetails.setUser(user);
+        userDetails.setPermissions(authorities);
+
         return userDetails;
     }
 }

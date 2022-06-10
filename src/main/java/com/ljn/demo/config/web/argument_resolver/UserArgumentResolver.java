@@ -1,4 +1,4 @@
-package com.ljn.demo.config.web;
+package com.ljn.demo.config.web.argument_resolver;
 
 import com.ljn.demo.user_login_vertify.User;
 import com.ljn.demo.user_login_vertify.UserService;
@@ -15,13 +15,13 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// 自定义参数解析器
+// 自定义参数解析器，命名规则xxxArgumentResolver
 @Component
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     private UserService userService;
 
-    // 用于判断本次请求是否需要解析参数，如果返回true才会执行下面的方法
+    // 用于判断handler参数是否需要解析，如果返回true才会执行下面的方法
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
         Class<?> clazz = methodParameter.getParameterType();
@@ -29,7 +29,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         return clazz == User.class;
     }
 
-    // 拦截之后的处理逻辑
+    // 进行参数解析
     @Override
     public Object resolveArgument(MethodParameter methodParameter,
                                   ModelAndViewContainer modelAndViewContainer,

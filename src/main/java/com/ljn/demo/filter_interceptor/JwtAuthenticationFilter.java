@@ -23,7 +23,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String id = JwtUtil.getIdByJwtToken(request);
+        String id = JwtUtil.getIdFromJwtToken(request);
         if (!StringUtils.hasText(id)) {
             filterChain.doFilter(request, response);
             // 必须要有return，否则后面的过滤器执行完还会接着往下执行

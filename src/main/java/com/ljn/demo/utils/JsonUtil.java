@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Json工具类
- *
- * @author zhoubin
+ * Json工具类，优先考虑使用fastjson
+ * 使用jackson实现了fastjson的常用功能
+ * @author
  * @since 1.0.0
  */
 public class JsonUtil {

@@ -8,7 +8,7 @@ public class ProxyClassObjectFactory2 {
         Enhancer enhancer = new Enhancer();
         // 相当于target.getClass().getClassLoader
         enhancer.setClassLoader(clas.getClassLoader());
-        // 相当于target.getClass().getInterfaces
+        // 设置父类，相当于target.getClass().getInterfaces
         enhancer.setSuperclass(clas);
         // 相当于new ProxyClass
         enhancer.setCallback(new ProxyClass2());

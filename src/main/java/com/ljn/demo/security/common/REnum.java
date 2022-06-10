@@ -8,7 +8,8 @@ public enum REnum {
     LOGOUT_SUCCESS(200, "注销成功"),
     LOGOUT_ERROR(200, "注销失败"),
     AUTHENTICATION_ERROR(401, "认证失败"),
-    AUTHORITY_ERROR(403, "权限不足")
+    AUTHORITY_ERROR(403, "权限不足"),
+    NEED_LOGIN(401,"需要登录后操作")
     ;
     private final Integer code;
     private final String message;

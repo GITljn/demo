@@ -2,31 +2,29 @@ package com.ljn.demo.security.common;
 
 import lombok.Data;
 
-import java.util.HashMap;
-import java.util.Map;
-
+// 不加Data注解无法转换成json
 @Data
-public class R {
+public class R<T> {
     private Boolean success;
     private Integer code;
     private String msg;
-    private Map<String, Object> data = new HashMap<>();
+    private T data;
 
     private R(){}
 
     public static R success() {
         R r = new R();
         r.success = true;
-        r.code = REnum.SUCCESS.getCode();
-        r.msg = REnum.SUCCESS.getMessage();
+        r.code = com.ljn.demo.response_bean.me2.REnum.SUCCESS.getCode();
+        r.msg = com.ljn.demo.response_bean.me2.REnum.SUCCESS.getMessage();
         return r;
     }
 
     public static R error() {
         R r = new R();
         r.success = false;
-        r.code = REnum.ERROR.getCode();
-        r.msg = REnum.ERROR.getMessage();
+        r.code = com.ljn.demo.response_bean.me2.REnum.ERROR.getCode();
+        r.msg = com.ljn.demo.response_bean.me2.REnum.ERROR.getMessage();
         return r;
     }
 
@@ -46,13 +44,8 @@ public class R {
         return this;
     }
 
-    public R data(Map<String, Object> data) {
+    public R data(T data) {
         this.data = data;
-        return this;
-    }
-
-    public R data(String key, Object value) {
-        this.data.put(key, value);
         return this;
     }
 }

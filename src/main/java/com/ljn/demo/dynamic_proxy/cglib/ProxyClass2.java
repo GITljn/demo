@@ -22,6 +22,7 @@ public class ProxyClass2 implements MethodInterceptor {
         // method.invoke(o, args)和methodProxy.invoke(o, args)的区别
         // Object result = methodProxy.invoke(o, args);    // 报错
         // Object result = method.invoke(o, args);         // 报错
+        // 调用父类(目标类，因为目标类没有接口，代理类其实是目标类的子类)中的方法
         Object result = methodProxy.invokeSuper(o, args);
         System.out.println("后置处理方法");
         return result;

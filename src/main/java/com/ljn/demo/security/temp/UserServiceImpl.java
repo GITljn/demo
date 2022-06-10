@@ -43,8 +43,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String userId = userDetails.getUser().getId().toString();
         String userName = userDetails.getUser().getUserName();
         redisUtil.setCacheObject("login:"+userId, userDetails);
-        String token = JwtUtil.getJwtToken(userId, userName);
-        return R.success().codeAndMsg(REnum.LOGIN_SUCCESS).data("token", token);
+        String token = JwtUtil.createJwtToken(userId, userName);
+        return R.success().codeAndMsg(REnum.LOGIN_SUCCESS).data(token);
     }
 
     @Override

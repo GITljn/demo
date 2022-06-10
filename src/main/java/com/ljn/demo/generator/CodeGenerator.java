@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 // 使用默认生成模板引擎 Velocity
 public class CodeGenerator {
     /**
-     * 修改数据库名、包名、表名
+     * 修改数据库名、包名、模块名、表名、表前缀
      * @param args
      */
     public static void main(String[] args) {
@@ -67,7 +67,7 @@ public class CodeGenerator {
         strategy.setTablePrefix("t_");
         // 数据库表字段名映射到实体类属性名的策略
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        // @Data注解 @Accessors(chain = true) setter链式操作
+        // @Data注解 @Accessors(chain = true) setter链式编程
         strategy.setEntityLombokModel(true); // lombok 模型
         // restful api风格控制器
         strategy.setRestControllerStyle(true);

@@ -20,14 +20,16 @@ public class GlobalExceptionHandler {
     // 常用于手动抛出异常，并将异常信息展示给用户
     @ExceptionHandler(DemoException.class)
     public R error(DemoException exception) {
+        exception.printStackTrace();
         return R.error().code(exception.getCode()).msg(exception.getMsg());
     }
 
     @ExceptionHandler(BindException.class)
     public R error(BindException exception) {
-        R r = R.error().codeAndMsg(REnum.BIND_ERROR);
-        r.msg("参数校验异常: " + exception.getBindingResult().getAllErrors().get(0).getDefaultMessage());
-        return r;
+        exception.printStackTrace();
+        return R.error().code(REnum.BIND_ERROR.getCode())
+                .msg("参数校验异常: " + exception.getBindingResult()
+                        .getAllErrors().get(0).getDefaultMessage());
     }
 //    在同一个函数内对不同类型的异常进行处理
 //    @ExceptionHandler(Exception.class)
