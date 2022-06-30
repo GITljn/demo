@@ -14,7 +14,12 @@ public class Demo06 {
                     try {
                         semaphore.acquire(1);
                         System.out.println(Thread.currentThread().getName() + ": " + i++);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
                         semaphore.release(1);
+                    }
+                    try {
                         Thread.sleep(150);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -34,7 +39,12 @@ public class Demo06 {
                     try {
                         semaphore.acquire(1);
                         System.out.println(Thread.currentThread().getName() + ": " + i++);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
                         semaphore.release(1);
+                    }
+                    try {
                         Thread.sleep(150);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

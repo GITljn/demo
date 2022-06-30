@@ -2,7 +2,8 @@ package com.ljn.demo.concurrent.Synchronized;
 
 import com.ljn.demo.concurrent.ReentrantLock.Demo03;
 
-// notify和wait分别在两个线程中，程序可以停止
+// notify和wait分别在两个线程中
+// 程序是否可以正常退出取决于i的上限
 public class Demo01 {
     private static int i = 1;
 

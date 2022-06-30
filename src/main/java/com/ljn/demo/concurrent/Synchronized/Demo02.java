@@ -1,7 +1,7 @@
 package com.ljn.demo.concurrent.Synchronized;
 
-// notify和wait在同一个线程中，程序不能停止
-// 要保证程序可以正常退出，则打印最后一个数后不可以调用wait，
+// notify和wait在同一个线程中
+// 程序不能停止，要保证程序可以正常退出，则打印最后一个数后不可以调用wait
 public class Demo02 {
     private static int i = 1;
 
