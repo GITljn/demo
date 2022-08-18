@@ -1,10 +1,12 @@
 package com.ljn.demo.acl.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ljn.demo.acl.entity.Permission;
 import com.ljn.demo.acl.entity.RolePermission;
 import com.ljn.demo.acl.entity.User;
+import com.ljn.demo.acl.helper.MemuHelper;
 import com.ljn.demo.acl.helper.PermissionHelper;
 import com.ljn.demo.acl.mapper.PermissionMapper;
 import com.ljn.demo.acl.service.PermissionService;
@@ -133,6 +135,21 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
             selectPermissionValueList = baseMapper.selectPermissionValueByUserId(id);
         }
         return selectPermissionValueList;
+    }
+
+    @Override
+    public List<JSONObject> selectPermissionByUserId(String userId) {
+        List<Permission> selectPermissionList = null;
+        if(this.isSysAdmin(userId)) {
+            //如果是超级管理员，获取所有菜单
+            selectPermissionList = baseMapper.selectList(null);
+        } else {
+            selectPermissionList = baseMapper.selectPermissionByUserId(userId);
+        }
+
+        List<Permission> permissionList = PermissionHelper.bulid(selectPermissionList);
+        List<JSONObject> result = MemuHelper.bulid(permissionList);
+        return result;
     }
 
     /**
