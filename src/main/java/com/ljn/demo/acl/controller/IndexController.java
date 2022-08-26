@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 
 import com.ljn.demo.acl.common.R;
 import com.ljn.demo.acl.service.IndexService;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 

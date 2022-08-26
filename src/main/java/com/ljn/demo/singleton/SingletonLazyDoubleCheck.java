@@ -4,7 +4,7 @@ public class SingletonLazyDoubleCheck {
     // volatile
     private volatile static SingletonLazyDoubleCheck singletonLazyDoubleCheck;
 
-    private SingletonLazyDoubleCheck(){
+    private SingletonLazyDoubleCheck() {
 
     }
 
