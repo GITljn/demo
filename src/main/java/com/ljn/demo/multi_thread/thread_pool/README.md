@@ -1,0 +1,3 @@
+1. 常见的线程池包括SingleThreadExecutor、FixedThreadPool、CachedThreadPool
+2. 可以通过execute和submit两种方式提交任务
+3. 通过创建线程执行Callable类型任务和使用线程池执行Callable类型任务获取的返回值的类型是不同的
