@@ -4,6 +4,8 @@ public class PageInfo {
     private int current = 1;
     private int size = 10;
     private int totalRows;
+    // 首页、末页、上一页、下一页都需要路径，如果全都在前端写，后面路径一旦需要修改，维护起来很麻烦
+    private String path;
 //    private int totalPages;
 //    private int from;
 //    private int to;
@@ -39,6 +41,14 @@ public class PageInfo {
         if (totalRows >= 0) {
             this.totalRows = totalRows;
         }
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public int getTotalPages() {
