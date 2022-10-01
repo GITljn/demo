@@ -7,7 +7,7 @@ public class Demo10 {
     public static Integer sum = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        Integer num = 3;
+        int num = 3;
         CountDownLatch countDownLatch = new CountDownLatch(num);
         for (int i = 0; i < num; i++) {
             new Thread(new MyRunnable(countDownLatch)).start();
@@ -18,8 +18,8 @@ public class Demo10 {
     }
 
     public static class MyRunnable implements Runnable {
-        private Random random = new Random();
-        private CountDownLatch countDownLatch;
+        private final Random random = new Random();
+        private final CountDownLatch countDownLatch;
 
         public MyRunnable(CountDownLatch countDownLatch) {
             this.countDownLatch = countDownLatch;
