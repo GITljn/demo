@@ -1,10 +1,10 @@
-package com.ljn.demo.singleton;
+package com.ljn.demo.design_pattern.singleton;
 
 public class SingletonLazyDoubleCheck {
     // volatile
     private volatile static SingletonLazyDoubleCheck singletonLazyDoubleCheck;
 
-    private SingletonLazyDoubleCheck(){
+    private SingletonLazyDoubleCheck() {
 
     }
 

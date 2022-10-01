@@ -1,4 +1,4 @@
-package com.ljn.demo.singleton;
+package com.ljn.demo.design_pattern.singleton;
 
 public class SingletonHungry {
     private static SingletonHungry singletonHungry = new SingletonHungry();

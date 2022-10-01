@@ -7,21 +7,28 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.util.pattern.PathPatternParser;
 
+/**
+ * 在Gateway中进行跨域处理就不需要在其他服务中单独处理了
+ * 1.浏览器在跨域请求时会在正式通信之前发送一个预检请求，请求方式为options
+ * 2.服务器返回允许跨域的源地址、请求头、请求方法
+ * 3.浏览器向服务器发出正式的请求
+ */
 @Configuration
 public class CorsConfig {
 
-    // 解决跨域问题的组件，使用该组件后不能再在controller上使用crossorgin注解
     @Bean
     public CorsWebFilter corsFilter() {
+        // 跨域配置对象，存放允许的源地址、头、请求的方法
         CorsConfiguration config = new CorsConfiguration();
-
-        config.addAllowedMethod("*");
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
+        // 配置拦截的请求（拦截所有请求）
         source.registerCorsConfiguration("/**", config);
 
+        // spring提供的解决跨域的过滤器
         return new CorsWebFilter(source);
     }
 }
