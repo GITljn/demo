@@ -3,7 +3,7 @@
     <!--修改的地方：contextName、日志文件夹位置、项目名、logger-->
     <contextName>community</contextName>
     <!-- 日志文件夹位置 -->
-    <property name="LOG_PATH" value="D:/Java/8project/012community"/>
+    <property name="LOG_PATH" value="D:/data"/>
     <!-- 项目名 -->
     <property name="APPDIR" value="community"/>
 
