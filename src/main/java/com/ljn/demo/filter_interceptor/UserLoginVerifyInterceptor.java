@@ -2,7 +2,6 @@ package com.ljn.demo.filter_interceptor;
 
 import com.ljn.demo.user_login_vertify.User;
 import com.ljn.demo.user_login_vertify.UserService;
-import com.ljn.demo.user_login_vertify.interceptor.UserContext;
 import com.ljn.demo.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +37,6 @@ public class UserLoginVerifyInterceptor implements HandlerInterceptor {
     // 模板引擎之后执行
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
+        UserContext.removeUser();
     }
 }

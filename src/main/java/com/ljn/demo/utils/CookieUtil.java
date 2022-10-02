@@ -28,8 +28,11 @@ public final class CookieUtil {
      * @return
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName, boolean isDecoder) {
+        if (request == null || cookieName == null) {
+            throw new IllegalArgumentException("request和cookieName均不可为空");
+        }
         Cookie[] cookieList = request.getCookies();
-        if (cookieList == null || cookieName == null) {
+        if (cookieList == null) {
             return null;
         }
         String retValue = null;
@@ -58,8 +61,11 @@ public final class CookieUtil {
      * @return
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName, String encodeString) {
+        if (request == null || cookieName == null) {
+            throw new IllegalArgumentException("request和cookieName均不可为空");
+        }
         Cookie[] cookieList = request.getCookies();
-        if (cookieList == null || cookieName == null) {
+        if (cookieList == null) {
             return null;
         }
         String retValue = null;
