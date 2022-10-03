@@ -141,12 +141,20 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <!--将src目录下的xml文件编译到target中-->
+
         <resources>
+            <!--将src目录下的xml文件编译到target中-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
