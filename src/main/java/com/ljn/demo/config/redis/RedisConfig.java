@@ -7,6 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+// 修改redis中key的泛型，将Object变成String
+// 配置redis存储数据的方式
 @Configuration
 public class RedisConfig {
     // 实现key和value的序列化，默认会序列化成二进制，占用空间大
@@ -22,7 +24,7 @@ public class RedisConfig {
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
 
-        // 设置连接工厂
+        // 设置redis连接工厂
         redisTemplate.setConnectionFactory(factory);
         return redisTemplate;
     }
