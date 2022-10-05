@@ -6,6 +6,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+// ControllerAdvice标识的类为controller全局配置类
 // 可以捕获所有controller中的异常，将异常信息展示给用户
 @RestControllerAdvice
 public class GlobalExceptionHandler {
