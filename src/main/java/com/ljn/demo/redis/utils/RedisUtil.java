@@ -1,4 +1,4 @@
-package com.ljn.demo.utils;
+package com.ljn.demo.redis.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
