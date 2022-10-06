@@ -97,7 +97,7 @@ public class RedisExample {
             public Object execute(RedisOperations redisOperations) throws DataAccessException {
                 String redisKey = "text:tx";
 
-                // 启用事务
+                // 启用事务, 查询操作放到事务之外
                 redisOperations.multi();
                 redisOperations.opsForSet().add(redisKey, "zhangsan");
                 redisOperations.opsForSet().add(redisKey, "lisi");

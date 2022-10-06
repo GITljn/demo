@@ -74,4 +74,8 @@ public class PageInfo {
     public boolean getHasNext() {
         return current < getTotalPages();
     }
+
+    public int getOffset() {
+        return (current - 1) * size;
+    }
 }
