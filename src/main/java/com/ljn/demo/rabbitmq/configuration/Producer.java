@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class Provider {
+public class Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
