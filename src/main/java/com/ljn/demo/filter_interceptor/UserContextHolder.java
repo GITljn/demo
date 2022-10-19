@@ -2,7 +2,7 @@ package com.ljn.demo.filter_interceptor;
 
 import com.ljn.demo.user_login_vertify.User;
 
-public class UserContext {
+public class UserContextHolder {
     private static ThreadLocal<User> userThreadLocal = new ThreadLocal<>();
 
     public static void setUser(User user) {

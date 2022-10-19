@@ -2,8 +2,10 @@ package com.ljn.demo.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 日期操作工具类
@@ -49,31 +51,53 @@ public class DateUtil {
     public static Date addDays(Date date, int amount) {
         Calendar now = Calendar.getInstance();
         now.setTime(date);
-        now.set(Calendar.DATE,now.get(Calendar.DATE)+amount);
+        now.add(Calendar.DATE, amount);
+//        now.set(Calendar.DATE,now.get(Calendar.DATE)+amount);
         return now.getTime();
     }
 
     /**
      * 计算两个日期之间相隔的天数
-     * @param date1
-     * @param date2
+     * @param start
+     * @param end
      * @return
      */
-    public static int daysBetween(Date date1, Date date2) {
+    public static int daysBetween(Date start, Date end) {
         Calendar calendar1 = Calendar.getInstance();
-        calendar1.setTime(date1);
+        calendar1.setTime(start);
         long milliseconds1 = calendar1.getTimeInMillis();
         Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTime(date2);
+        calendar2.setTime(end);
         long milliseconds2 = calendar2.getTimeInMillis();
         long days = (milliseconds2-milliseconds1) / (1000*3600*24);
         return Integer.parseInt(String.valueOf(days));
     }
 
+    /**
+     * 计算两个日期之间的日期列表
+     * @param start
+     * @param end
+     * @return
+     */
+    public static List<String> dayListBetween(Date start, Date end) {
+        List<String> dayList = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(start);
+        while (!calendar.getTime().after(end)) {
+            dayList.add(formatDate(calendar.getTime()));
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dayList;
+    }
+
     public static void main(String[] args) {
-        System.out.println(DateUtil.formatDate(new Date()));
-        System.out.println(DateUtil.formatDate(DateUtil.addDays(new Date(), 334)));
-        System.out.println(DateUtil.daysBetween(DateUtil.parseDate("2022-07-19"),
-                DateUtil.parseDate("2022-07-19")));
+//        System.out.println(DateUtil.formatDate(new Date()));
+//        System.out.println(DateUtil.formatDate(DateUtil.addDays(new Date(), 334)));
+//        System.out.println(DateUtil.daysBetween(DateUtil.parseDate("2022-07-19"),
+//                DateUtil.parseDate("2022-07-19")));
+        System.out.println(111);
+        Date date1 = DateUtil.parseDate("2022-10-28");
+        Date date2 = DateUtil.parseDate("2022-11-03");
+        System.out.println(DateUtil.dayListBetween(date1, date2));
     }
 }

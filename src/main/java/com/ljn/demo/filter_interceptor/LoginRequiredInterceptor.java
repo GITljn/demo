@@ -1,6 +1,5 @@
 package com.ljn.demo.filter_interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -19,7 +18,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
             final Method method = handlerMethod.getMethod();
             // 获取方法上的目标注解
             final LoginRequired loginRequired = method.getAnnotation(LoginRequired.class);
-            if (loginRequired != null && UserContext.getUser() == null) {
+            if (loginRequired != null && UserContextHolder.getUser() == null) {
                 response.sendRedirect(request.getContextPath() + "/login");
                 return false;
             }

@@ -24,7 +24,7 @@ public class UserLoginVerifyInterceptor implements HandlerInterceptor {
         if (user == null) {
             return false;
         }
-        UserContext.setUser(user);
+        UserContextHolder.setUser(user);
         return true;
     }
 
@@ -37,6 +37,6 @@ public class UserLoginVerifyInterceptor implements HandlerInterceptor {
     // 模板引擎之后执行
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        UserContext.removeUser();
+        UserContextHolder.removeUser();
     }
 }

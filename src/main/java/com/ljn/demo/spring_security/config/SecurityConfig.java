@@ -112,7 +112,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                //关闭csrf
+                //关闭csrf，关闭之后security不会验证前端传来的csrf令牌
                 .csrf().disable()
                 //不通过Session获取SecurityContext
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -143,7 +143,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(accessDeniedHandler);
         // 允许跨域
         http.cors();
-        // 关闭默认的logout
+        // 默认拦截/logout，关闭默认的logout就不会拦截
         http.logout().disable();
     }
 
