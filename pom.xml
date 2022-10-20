@@ -143,6 +143,12 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
             <version>2.1.5.RELEASE</version>
         </dependency>
+        <!-- quartz -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
