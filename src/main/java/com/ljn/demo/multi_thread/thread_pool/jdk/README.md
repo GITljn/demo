@@ -1,0 +1,3 @@
+1. 常见的线程池包括SingleThreadExecutor、FixedThreadPool、CachedThreadPool、ScheduleThreadPool
+2. 常见的线程池接口包括ExecutorService和ScheduledExecutorService
+3. 可以通过execute和submit两种方式提交任务
