@@ -1,4 +1,4 @@
-package com.ljn.demo.html_to_pdf;
+package com.ljn.demo.wk_html_to_pdf;
 
 import org.junit.Test;
 
