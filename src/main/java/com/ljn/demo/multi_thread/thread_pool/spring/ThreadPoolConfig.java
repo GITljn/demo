@@ -5,7 +5,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-// 开启定时任务
+// 开启定时任务，加了该注解spring才会创建定时线程池
 // 在普通方法上加@Scheduled，方法会定时执行
 @EnableScheduling
 // 开启异步调用
