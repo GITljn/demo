@@ -160,6 +160,13 @@
             <artifactId>caffeine</artifactId>
             <version>2.7.0</version>
         </dependency>
+        <!-- 项目监控 actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
