@@ -14,6 +14,7 @@ import java.sql.SQLException;
 @Component
 // id为端点的名称
 // 访问路径: ip:port/context path/acturator/database
+// 可以通过security配置访问权限
 @Endpoint(id = "database")
 public class DataBaseEndPoint {
     @Autowired
