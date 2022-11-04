@@ -25,7 +25,7 @@ public class CorsConfig {
         config.addAllowedMethod("*");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
-        // 配置拦截的请求（拦截所有请求）
+        // 配置拦截的请求路径（拦截所有请求）
         source.registerCorsConfiguration("/**", config);
 
         // spring提供的解决跨域的过滤器
