@@ -20,9 +20,16 @@ public class CorsConfig {
     public CorsWebFilter corsFilter() {
         // 跨域配置对象，存放允许的源地址、头、请求的方法
         CorsConfiguration config = new CorsConfiguration();
+        // 允许任何主机访问（域名或IP+Port）
         config.addAllowedOrigin("*");
+        // 允许请求头中携带任何key和value
         config.addAllowedHeader("*");
+        // 允许任何方法（post、get等）
         config.addAllowedMethod("*");
+        //允许携带cookie访问（跨域默认不允许携带cookie）
+        config.setAllowCredentials(true);
+        // 这些配置的有效时间
+        config.setMaxAge(100000L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
         // 配置拦截的请求路径（拦截所有请求）
