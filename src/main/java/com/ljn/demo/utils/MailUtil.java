@@ -40,7 +40,7 @@ public class MailUtil {
         try {
             sendMail("from", "to", "subject", content, true);
         } catch (MessagingException e) {
-            logger.error("发送邮件失败" + e.getMessage());
+            logger.error("发送邮件失败: " + e.getMessage());
         }
     }
 }
