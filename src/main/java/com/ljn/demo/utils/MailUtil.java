@@ -22,18 +22,14 @@ public class MailUtil {
     @Autowired
     private TemplateEngine templateEngine;
 
-    public void sendMail(String from, String to, String subject, String text, boolean html) {
-        try {
-            MimeMessage mimeMessage = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(text, html);
-            mailSender.send(helper.getMimeMessage());
-        } catch (MessagingException e) {
-            logger.error("发送邮件失败: " + e.getMessage());
-        }
+    public void sendMail(String from, String to, String subject, String text, boolean html) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(text, html);
+        mailSender.send(helper.getMimeMessage());
     }
 
     public void demo() {
@@ -41,6 +37,10 @@ public class MailUtil {
         context.setVariable("email", "xxx@xxx.com");
         context.setVariable("url", "xxxx/activation/userId/activateCode");
         String content = templateEngine.process("/mail/activation", context);
-        sendMail("from", "to", "subject", content, true);
+        try {
+            sendMail("from", "to", "subject", content, true);
+        } catch (MessagingException e) {
+            logger.error("发送邮件失败" + e.getMessage());
+        }
     }
 }
