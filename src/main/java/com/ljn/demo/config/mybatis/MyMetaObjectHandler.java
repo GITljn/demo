@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 /**
  * 自动填充
+ * 在相应字段上加 @TableField(fill = FieldFill.INSERT_UPDATE)
+ * 如果出现类型不匹配，将LocalDateTime.now()改为new Date()
  */
 
 @Component
