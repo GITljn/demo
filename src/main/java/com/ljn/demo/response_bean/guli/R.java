@@ -7,6 +7,7 @@ import java.util.Map;
 
 @Data
 public class R {
+    // 成功的code可能不同，success可以确定是否成功
     private Boolean success;
     private Integer code;
     private String msg;

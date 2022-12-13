@@ -6,6 +6,7 @@ import lombok.Data;
 // 不加Data注解无法转换成json
 @Data
 public class R <T> {
+    // 成功的code可能不同，success可以确定是否成功
     private Boolean success;
     private Integer code;
     private String msg;
