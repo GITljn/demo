@@ -5,6 +5,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class MD5Util {
     private static String salt = "1a2b3c4d";
 
+    private MD5Util() {
+
+    }
+
     private static String md5(String pass) {
         return DigestUtils.md5Hex(pass);
     }

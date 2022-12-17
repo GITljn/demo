@@ -18,6 +18,10 @@ import java.util.List;
 public class JsonUtil {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
+    private JsonUtil() {
+
+    }
+
     /**
      * 将对象转换成json字符串
      *

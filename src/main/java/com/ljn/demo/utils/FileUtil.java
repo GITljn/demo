@@ -8,6 +8,8 @@ import java.io.IOException;
 public class FileUtil {
     private String filePath;
 
+    private FileUtil() {}
+
     // 从服务器获取图片
     public void getImage(String fileName, HttpServletResponse response) {
         // 服务器存放路径

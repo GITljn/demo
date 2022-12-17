@@ -17,6 +17,8 @@ public class JwtUtil {
     public static final long EXPIRE = 1000 * 60 * 60 * 24; //token过期时间
     public static final String APP_SECRET = "ukc8liuDbRigUDaY6pZFfWus2jZWLPHO"; //秘钥
 
+    private JwtUtil() {}
+
     /**
      * 生成token字符串
      * @param id

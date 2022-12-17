@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class DateUtil {
 
+    private DateUtil() {}
+
     private static final String dateFormat = "yyyy-MM-dd";
 
     /**
