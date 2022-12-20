@@ -54,7 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // 配置需要放行的请求
+        // 配置需要放行的请求，直接绕过security中的所有过滤器
+        // 路径的开头要去掉context-path
         web.ignoring().antMatchers("/resources/**");
     }
 
@@ -121,16 +122,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().disable();
         // 默认拦截/logout，关闭默认的logout就不会拦截
         http.logout().logoutUrl("自己的退出地址");
-        // 关闭csrf，关闭之后security不会验证前端传来的csrf令牌
+        // 关闭csrf，关闭之后security不会验证前端传来的csrf令牌，否则会拦截Get以外的其他三种类型的方法
         http.csrf().disable();
         // 不通过Session获取SecurityContext
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http
                 .authorizeRequests()
-                // 配置访问的权限，访问具体路径需要的权限或者角色一般是通过注解设置的@hasAuthority
+                // 不需要权限
                 //.antMatchers("").permitAll()
                 // 必须匿名访问
                 .antMatchers("/user/login").anonymous()
+                // 配置访问的权限，访问具体路径需要的权限或者角色一般是通过注解设置的@hasAuthority
                 //.antMatchers("").hasRole("")
                 //.antMatchers("").hasAnyRole("")
                 //.antMatchers("").hasAuthority("")
