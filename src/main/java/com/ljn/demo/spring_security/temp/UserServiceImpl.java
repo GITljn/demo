@@ -35,7 +35,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public R login(User user) {
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = new
+                UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
         if (authentication == null) {
             throw new RuntimeException("登录失败");

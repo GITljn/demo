@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
@@ -147,6 +148,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout().disable();
     }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // 配置需要放行的请求
+        web.ignoring().antMatchers("/api/**", "/swagger-resources/**",
+                "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+    }
 
     // 指定密码加密方式
     @Bean

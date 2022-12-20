@@ -9,7 +9,8 @@ import java.util.List;
 @Component
 public class SecurityExpression {
     public boolean hasAuthority(String authority) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
         List<String> permissions = userDetails.getPermissions();
         return permissions.contains(authority);
     }
