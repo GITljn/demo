@@ -52,18 +52,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccessDeniedHandler accessDeniedHandler;
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // 配置需要放行的请求
+        web.ignoring().antMatchers("/resources/**");
+    }
+
     // 认证管理
     // AuthenticationManager: 认证的核心接口
     // AuthenticationManagerBuilder: 用于构建AuthenticationManager对象的工具类
     // ProviderManager: AuthenticationManager的默认实现类
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // 内置的认证规则
+        // 自定义登录页面
         // 获得用户以及加密的方式
         // auth.userDetailsService().passwordEncoder()
 
-        // 自定义认证规则
-        // 自定义认证规则可以考虑用户的状态(如禁用)
+        // 使用security提供的登录页面
         // AuthenticationProvider: ProviderManager持有一组AuthenticationProvider,
         // 每个AuthenticationProvider负责一种认证类型(账号密码登录、第三方登录、指纹登录、刷脸登录)
         // 委托模式: ProviderManager将认证过程委托给AuthenticationProvider
@@ -112,12 +117,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 权限管理
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // 允许跨域
+        http.cors().disable();
+        // 默认拦截/logout，关闭默认的logout就不会拦截
+        http.logout().logoutUrl("自己的退出地址");
+        // 关闭csrf，关闭之后security不会验证前端传来的csrf令牌
+        http.csrf().disable();
+        // 不通过Session获取SecurityContext
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http
-                //关闭csrf，关闭之后security不会验证前端传来的csrf令牌
-                .csrf().disable()
-                //不通过Session获取SecurityContext
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
                 .authorizeRequests()
                 // 配置访问的权限，访问具体路径需要的权限或者角色一般是通过注解设置的@hasAuthority
                 //.antMatchers("").permitAll()
@@ -127,7 +135,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("").hasAnyRole("")
                 //.antMatchers("").hasAuthority("")
                 //.antMatchers("").hasAnyAuthority("")
-                // 除上面外的所有请求，认证之后可以访问
+                // 除上面外的所有请求，其余需认证之后才可以访问
                 .anyRequest().authenticated();
 
         // 配置过滤器
@@ -142,17 +150,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(authenticationEntryPoint)
                 // 授权失败处理器
                 .accessDeniedHandler(accessDeniedHandler);
-        // 允许跨域
-        http.cors();
-        // 默认拦截/logout，关闭默认的logout就不会拦截
-        http.logout().disable();
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        // 配置需要放行的请求
-        web.ignoring().antMatchers("/api/**", "/swagger-resources/**",
-                "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
 
     // 指定密码加密方式
@@ -162,9 +159,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // 将AuthenticationManager(认证链的起始对象)交给spring容器
+//    @Bean
+//    @Override
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
+
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 }

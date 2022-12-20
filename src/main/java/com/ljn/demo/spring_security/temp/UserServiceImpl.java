@@ -57,7 +57,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (flag) {
             return R.success().codeAndMsg(REnum.LOGOUT_SUCCESS);
         }
-        return R.success().codeAndMsg(REnum.LOGOUT_ERROR);
+        return R.error().codeAndMsg(REnum.LOGOUT_ERROR);
     }
 
     @Override
