@@ -15,7 +15,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonIgnoreProperties({"user", "enabled","accountNonExpired", "accountNonLocked", "credentialsNonExpired", "authorities"})
 //SimpleGrantedAuthority没有无参构造函数，反序列化的时候无法创建对象，所以反序列化会报错
 @JsonIgnoreProperties(value = "authorities", ignoreUnknown = true)
 public class UserDetailsImpl implements UserDetails {

@@ -1,6 +1,6 @@
 # 使用说明
 ## 认证过程
-### 以下在登录接口中实现
+### 以下在登录接口中实现，代码示例在temp/UserServiceImpl
 1. 通过username和password创建一个UsernamePasswordAuthenticationToken
 2. 在SecurityConfig中将AuthenticationManager对象注入spring容器，调用authenticate(authenticationToken)执行过滤器链返回认证结果，如果认证结果为空，则登录失败
 3. 编写UserDetailsService实现类，实现loadUserByUsername函数，通过数据库查询得到用户的基本信息和权限信息，封装到UserDetails中返回即可
