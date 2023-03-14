@@ -1,4 +1,4 @@
-package com.ljn.demo.caffeine;
+package com.ljn.demo.middleware.caffeine;
 
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;

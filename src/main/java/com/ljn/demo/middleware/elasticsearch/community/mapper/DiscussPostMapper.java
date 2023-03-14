@@ -1,7 +1,7 @@
-package com.ljn.demo.elasticsearch.community.mapper;
+package com.ljn.demo.middleware.elasticsearch.community.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ljn.demo.elasticsearch.community.entity.DiscussPost;
+import com.ljn.demo.middleware.elasticsearch.community.entity.DiscussPost;
 
 /**
  * <p>

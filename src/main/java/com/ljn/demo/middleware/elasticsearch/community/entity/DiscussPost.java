@@ -1,4 +1,4 @@
-package com.ljn.demo.elasticsearch.community.entity;
+package com.ljn.demo.middleware.elasticsearch.community.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

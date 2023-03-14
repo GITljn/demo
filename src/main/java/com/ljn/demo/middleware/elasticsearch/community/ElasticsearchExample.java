@@ -1,28 +1,10 @@
-package com.ljn.demo.elasticsearch.community;
+package com.ljn.demo.middleware.elasticsearch.community;
 
-import com.ljn.demo.elasticsearch.community.entity.DiscussPost;
-import com.ljn.demo.elasticsearch.community.service.DiscussPostService;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.common.text.Text;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
-import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
-import org.elasticsearch.search.sort.SortBuilders;
-import org.elasticsearch.search.sort.SortOrder;
+import com.ljn.demo.middleware.elasticsearch.community.entity.DiscussPost;
+import com.ljn.demo.middleware.elasticsearch.community.service.DiscussPostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 public class ElasticsearchExample {

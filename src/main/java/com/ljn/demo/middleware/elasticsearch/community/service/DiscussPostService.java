@@ -1,7 +1,7 @@
-package com.ljn.demo.elasticsearch.community.service;
+package com.ljn.demo.middleware.elasticsearch.community.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ljn.demo.elasticsearch.community.entity.DiscussPost;
+import com.ljn.demo.middleware.elasticsearch.community.entity.DiscussPost;
 
 import java.util.List;
 
