@@ -2,7 +2,7 @@ package com.ljn.demo.filter_interceptor;
 
 
 import com.ljn.demo.utils.JwtUtil;
-import com.ljn.demo.redis.utils.RedisUtil;
+import com.ljn.demo.middleware.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
