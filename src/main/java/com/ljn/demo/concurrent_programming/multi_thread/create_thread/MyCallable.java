@@ -1,4 +1,4 @@
-package com.ljn.demo.multi_thread.create_thread;
+package com.ljn.demo.concurrent_programming.multi_thread.create_thread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

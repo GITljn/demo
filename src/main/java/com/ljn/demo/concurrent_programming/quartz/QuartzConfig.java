@@ -1,4 +1,4 @@
-package com.ljn.demo.quartz;
+package com.ljn.demo.concurrent_programming.quartz;
 
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;

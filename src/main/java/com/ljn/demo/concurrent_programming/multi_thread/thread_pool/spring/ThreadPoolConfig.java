@@ -1,4 +1,4 @@
-package com.ljn.demo.multi_thread.thread_pool.spring;
+package com.ljn.demo.concurrent_programming.multi_thread.thread_pool.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;

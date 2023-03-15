@@ -1,4 +1,4 @@
-package com.ljn.demo.multi_thread.thread_pool.spring;
+package com.ljn.demo.concurrent_programming.multi_thread.thread_pool.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;

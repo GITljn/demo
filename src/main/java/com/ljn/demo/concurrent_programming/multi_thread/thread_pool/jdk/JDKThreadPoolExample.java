@@ -1,4 +1,4 @@
-package com.ljn.demo.multi_thread.thread_pool.jdk;
+package com.ljn.demo.concurrent_programming.multi_thread.thread_pool.jdk;
 
 import org.junit.Test;
 
