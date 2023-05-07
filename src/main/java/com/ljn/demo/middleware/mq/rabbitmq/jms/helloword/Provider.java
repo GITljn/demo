@@ -32,8 +32,8 @@ public class Provider {
         // 参数5:额外参数
         channel.queueDeclare("hello", false, false, false, null);
         // 8.利用通道向队列中发布消息
-        // 参数1:交换机，helloworld模式下不需要交换机
-        // 参数2:队列名
+        // 参数1:交换机名称，helloworld模式下不需要交换机
+        // 参数2:路由名称（此处为队列名称）
         // 参数3:额外设置。设置消息持久化MessageProperties.PERSISTENT_TEXT_PLAIN
         // 参数4:消息的具体内容
         channel.basicPublish("", "hello", null, "hello rabbitmq".getBytes());
